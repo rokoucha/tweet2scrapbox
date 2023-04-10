@@ -4,6 +4,9 @@
   "packageManager": "pnpm@8.2.0",
   "type": "module",
   "scripts": {
+    "build:client": "NODE_ENV=production esbuild --bundle src/index.client.tsx --format=esm --outfile=public/bundle.js",
+    "build:server": "NODE_ENV=production esbuild --bundle src/index.server.tsx --format=esm --sourcemap --outfile=functions/[[path]].js",
+    "build": "run-p build:*",
     "dev:client": "NODE_ENV=development esbuild --bundle src/index.client.tsx --format=esm --watch --sourcemap --outfile=public/bundle.js",
     "dev:server": "NODE_ENV=development esbuild --bundle src/index.server.tsx --format=esm --watch --sourcemap --outfile=functions/[[path]].js",
     "dev:wrangler": "NODE_ENV=development wrangler pages dev ./public --compatibility-date=2023-03-26 --ip ::0 --ip 0.0.0.0 --live-reload",
